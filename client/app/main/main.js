@@ -1,14 +1,24 @@
 'use strict';
 
 angular.module('ruddlerApp')
-    /* === CON "TUOWAA" S ===*/
+    /* === CON "TUOWAA" S :} ===*/
 
     /* Login Controller */
-    .controller('loginController', function ($scope, $http, $firebase, $firebaseSimpleLogin) {
+    .controller('loginController', function ($scope, $rootScope, $http, $firebase, ruddlerUtilService) {
         var firebase = new Firebase("https://linkedhub.firebaseio.com/");
     
         $scope.loginWithGithub = function(){
-            firebase.authWithOAuthPopup("github", function(error, authData) { 
+            firebase.authWithOAuthPopup("github", function(error, authData) {
+                if(!ruddlerUtilService.isUndefinedOrNull(error)){ return; }
+                if(!ruddlerUtilService.isUndefinedOrNull(authData))
+                    $rootScope.githubUser = {
+                        uid: authData.github.uid,
+                        username: authData.github.username,
+                        displayName: authData.github.displayName,
+                        email: authData.github.email
+                    }
+                    console.log('Github Authentication Successful!');
+                    console.log('Username: ' + $rootScope.githubUser.username);
             });
         }
         
@@ -24,11 +34,11 @@ angular.module('ruddlerApp')
     })
 
     /* Main Controller */
-    .controller('mainController', function ($scope, $http, $firebase) {
+    .controller('mainController', function ($scope, $http) {
     })
 
     /* Navigation Controller */
-    .controller('navigationController', function ($scope, $location, $firebase) {
+    .controller('navigationController', function ($scope, $location) {
         $scope.menu = [{
           'title': 'Home',
           'link': '/'
@@ -52,6 +62,15 @@ angular.module('ruddlerApp')
                $('#sign-in').sidr({
                     side: 'right'
                 });
+            }
+        };
+    })
+    
+    /* === SERVICES ===*/
+    .factory('ruddlerUtilService', function(){
+        return {
+            isUndefinedOrNull: function(val){
+                return angular.isUndefined(val) || val === null
             }
         };
     });

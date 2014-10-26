@@ -3,9 +3,27 @@
 angular.module('ruddlerApp')
     /* === CON "TUOWAA" S ===*/
 
-    /* Main Controller */
-    .controller('loginController', function ($scope, $http, $firebase) {
+    /* Login Controller */
+    .controller('loginController', function ($scope, $http, $firebase, $firebaseSimpleLogin) {
+        var firebase = new Firebase("https://linkedhub.firebaseio.com/");
+    
+        $scope.loginWithGithub = function(){
+            firebase.authWithOAuthPopup("github", function(error, authData) { 
+            });
+        }
+        
+        $scope.linkedIn_login = function(){
+            
+        };
+    
+        $scope.init = function(){
+            
+        };
+    
+        $scope.init();
     })
+
+    /* Main Controller */
     .controller('mainController', function ($scope, $http, $firebase) {
     })
 

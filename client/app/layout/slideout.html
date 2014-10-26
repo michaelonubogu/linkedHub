@@ -1,9 +1,9 @@
-<div id="sidr">
+<div id="sidr" data-ng-controller="loginController">
     <!-- Your content -->
     <div class="main">
         <form role="form">
             <div class="form-group login-fine-print">Sign in with Social Media</div>
-            <a id="github_sign_in" href="#" class="btn btn-twitter btn-block">
+            <a id="github_sign_in" href="#" class="btn btn-twitter btn-block" data-ng-click="loginWithGithub()">
                 <i class="fa fa-github"></i>
                 Sign in with Github</a>
             <a id="linkedin_sign_in" href="#" class="btn btn-facebook btn-block">

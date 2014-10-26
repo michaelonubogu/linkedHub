@@ -1,0 +1,54 @@
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    float:none;
+}
+
+.zero-padding-left {
+    padding-left:0px;
+}
+
+.zero-padding-right {
+    padding-right:0px;
+}
+
+.navbar-default {
+    background-color: #4393B9;
+    border-color: transparent;
+}
+
+.navbar-default .navbar-brand{
+    color:#ffffff;
+}
+
+.navbar-inverse {
+    background-color: #4393B9;
+    border-color: transparent;
+}
+
+.navbar-inverse .navbar-brand{
+    color:#ffffff;
+}
+
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: 5px;
+}
+
+.btn-twitter {
+    color: #fff;
+    background-color: #5bc0de !important;
+    border-color: #46b8da !important;
+}
+
+.btn-facebook{
+    color: #fff;
+    background-color: #3b5998 !important;
+    border-color: #3b5998 !important;
+}
+
+.btn-google{
+    color: #fff;
+    background: #c32f10 !important;
+    border-color: #c32f10;
+}

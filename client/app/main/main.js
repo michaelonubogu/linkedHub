@@ -4,11 +4,13 @@ angular.module('ruddlerApp')
     /* === CON "TUOWAA" S ===*/
 
     /* Main Controller */
-    .controller('mainController', function ($scope, $http) {
+    .controller('loginController', function ($scope, $http, $firebase) {
+    })
+    .controller('mainController', function ($scope, $http, $firebase) {
     })
 
     /* Navigation Controller */
-    .controller('navigationController', function ($scope, $location) {
+    .controller('navigationController', function ($scope, $location, $firebase) {
         $scope.menu = [{
           'title': 'Home',
           'link': '/'

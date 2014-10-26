@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ruddlerApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap'])
+angular.module('ruddlerApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'firebase'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {

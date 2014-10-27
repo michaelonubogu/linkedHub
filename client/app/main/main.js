@@ -10,15 +10,18 @@ angular.module('ruddlerApp')
         $scope.loginWithGithub = function(){
             firebase.authWithOAuthPopup("github", function(error, authData) {
                 if(!ruddlerUtilService.isUndefinedOrNull(error)){ return; }
-                if(!ruddlerUtilService.isUndefinedOrNull(authData))
+                if(!ruddlerUtilService.isUndefinedOrNull(authData)){
                     $rootScope.githubUser = {
                         uid: authData.github.uid,
                         username: authData.github.username,
                         displayName: authData.github.displayName,
                         email: authData.github.email
                     }
+                    $rootScope.isAuthenticated = true;
+                    $rootScope.userDisplayName = $rootScope.githubUser.username;
                     console.log('Github Authentication Successful!');
-                    console.log('Username: ' + $rootScope.githubUser.username);
+                    console.log('Username: ' + $rootScope.githubUser.username);   
+                }
             });
         }
         
@@ -34,23 +37,26 @@ angular.module('ruddlerApp')
     })
 
     /* Main Controller */
-    .controller('mainController', function ($scope, $http) {
+    .controller('mainController', function ($scope, $rootScope, $http) {
+        $rootScope.isAuthenticated = false;
+        $rootScope.userDisplayName = null;
     })
 
     /* Navigation Controller */
-    .controller('navigationController', function ($scope, $location) {
+    .controller('navigationController', function ($scope, $rootScope, $location) {
         $scope.menu = [{
           'title': 'Home',
           'link': '/'
         }];
 
         $scope.isCollapsed = true;
-
         $scope.isActive = function(route) {
           return route === $location.path();
         };
 
-        $scope.isAuthenticated = false;
+        $scope.init = function(){};
+    
+        $scope.init();
     })
 
     /* === DIRECTIVES ===*/
